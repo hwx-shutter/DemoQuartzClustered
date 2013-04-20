@@ -1,0 +1,9 @@
+**/*.classpath
+**/*.project
+**/*.class
+quartzdemo/target/**
+quartzdemo/bin/**
+quartzdemo/.externalToolBuilders/
+quartzdemo/.settings/**
+quartzdemo/maven-eclipse.xml
+
