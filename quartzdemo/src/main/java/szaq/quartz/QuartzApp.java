@@ -37,11 +37,17 @@ public class QuartzApp {
 	public SchedulerFactory schedulerFactoryBean() throws Exception {
 		Properties quartzProperties  = getProperties();
 		
-		final JobDetail job = JobBuilder.newJob(RecurrentJob.class).usingJobData("jobData", "I'm quartz job..")
-				.withIdentity("testJob", "testJobs").build();
+		final JobDetail job = JobBuilder.newJob(RecurrentJob.class)
+				.usingJobData("jobData", "I'm quartz job..")
+				.withIdentity("testJob", "testJobs")
+				.build();
 
-		final CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity("testTrigger", "testJobs")
-				.withSchedule(CronScheduleBuilder.cronSchedule("0/4 * * * * ?")).forJob(job).build();
+		final CronTrigger cronTrigger = TriggerBuilder
+				.newTrigger()
+				.withIdentity("testTrigger", "testJobs")
+				.withSchedule(CronScheduleBuilder.cronSchedule("0/4 * * * * ?"))
+				.forJob(job)
+				.build();
 
 		final SchedulerFactory schedulerFactoryBean = new StdSchedulerFactory(quartzProperties);
 		final Scheduler scheduler = schedulerFactoryBean.getScheduler();
